@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import Modal from '../Modal';
+import DropdownV2 from '../DropdownV2/DropdownV2';
 
 const props = () => ({
   className: 'some-class',
@@ -52,6 +53,20 @@ storiesOf('Modal', module)
           Please see ModalWrapper for more examples and demo of the
           functionality.
         </p>
+      </Modal>
+    ))
+  )
+  .add(
+    'with DropdownV2',
+    withInfo({
+      text: `
+    Modals communicate information via a secondary window and allow the user to maintain the context of a particular task.
+    Use the Modal Wrapper component to encapsulate your Modal within a button.
+  `,
+    })(() => (
+      <Modal {...props()}>
+        <p className="bx--modal-content__text">Open this dropdown</p>
+        <DropdownV2 items={['item1', 'item2', 'item3']} label={'Dropdown'} />
       </Modal>
     ))
   );
